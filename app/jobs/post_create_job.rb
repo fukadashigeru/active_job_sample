@@ -1,8 +1,9 @@
 class PostCreateJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(post_creater:)
     # Do something later
-    Post.create(content: "ジョブで作成")
+    post_creater.post_create
+    # Post.create(content: "ジョブで作成")
   end
 end
