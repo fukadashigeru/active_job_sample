@@ -24,7 +24,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    PostCreateJob.perform_later()
+    @post_creater = PostCreater.new()
+    PostCreateJob.perform_later(post_creater: @post_creater)
     @post = Post.new(post_params)
 
     respond_to do |format|
